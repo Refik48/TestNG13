@@ -11,6 +11,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class C03_SoftAssertTest {
@@ -87,7 +90,23 @@ public class C03_SoftAssertTest {
         String actualSeciliOpsiyon = select.getFirstSelectedOption().getText();
         String expectedValue = "Eurozone (euro)";
         softAssert.assertEquals(actualSeciliOpsiyon,expectedValue);
-        softAssert.assertAll(); // softAssertun raporlarinin yazdirilmasi icin gerekli method.
 
+
+        // 10. soft assert kullanarak DropDown listesinin su secenekleri oldugunu test edin
+        List<WebElement> liste = select.getOptions(); // Acilir Liste'deki elemanlari aldik.
+        List<String> expectedList = Arrays.asList("Select One",
+        "Australia (dollar)", "Canada (dollar)","Switzerland (franc)","China (yuan)",
+                "Denmark (krone)","Eurozone (euro)","Great Britain (pound)","Hong Kong (dollar)",
+                "Japan (yen)","Mexico (peso)","Norway (krone)","New Zealand (dollar)","Sweden (krona)",
+                "Singapore (dollar)","Thailand (baht)");
+        List<String> actualList = new ArrayList<String>();
+        for (WebElement w : liste) {
+            actualList.add(w.getText());
+        }
+        softAssert.assertEquals(actualList,expectedList,"liste birbirine esit degil");
+
+        softAssert.assertAll(); // softAssertun raporlarinin yazdirilmasi icin gerekli method.
     }
+
+
 }
