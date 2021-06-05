@@ -31,14 +31,20 @@ public class C03_iframeTest02 {
     @Test
     public void test01() {
         driver.get("https://html.com/tags/iframe/");
+
+        // iframe'i locate ettik
         WebElement iFrameWE = driver.findElement
                 (By.xpath("//iframe[@src='https://www.youtube.com/embed/owsfdh4gxyc']"));
 
+        // iframe'e gecis yaptik
         driver.switchTo().frame(iFrameWE);
 
+        // Video'nun Play butonu'nu locate ettik ve tikladik
         WebElement videoPlayButton = driver.findElement
                 (By.xpath("//button[@class='ytp-large-play-button ytp-button']"));
         videoPlayButton.click();
-        // Eger biz aradigimiz WebElementini test asamasinda
+        
+        // iframe'den cikis yaptik
+        driver.switchTo().defaultContent();
     }
 }
