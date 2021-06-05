@@ -1,4 +1,4 @@
-package tests.day09;
+package tests.day09_DropDown;
 
 public class C99_Sozel {
     /*

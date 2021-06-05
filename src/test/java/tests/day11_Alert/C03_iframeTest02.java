@@ -1,0 +1,44 @@
+package tests.day11_Alert;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
+public class C03_iframeTest02 {
+
+    WebDriver driver;
+
+    @BeforeClass
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    }
+
+    @AfterClass
+    public void tearDown() {
+        //driver.close();
+    }
+
+    @Test
+    public void test01() {
+        driver.get("https://html.com/tags/iframe/");
+        WebElement iFrameWE = driver.findElement
+                (By.xpath("//iframe[@src='https://www.youtube.com/embed/owsfdh4gxyc']"));
+
+        driver.switchTo().frame(iFrameWE);
+
+        WebElement videoPlayButton = driver.findElement
+                (By.xpath("//button[@class='ytp-large-play-button ytp-button']"));
+        videoPlayButton.click();
+        // Eger biz aradigimiz WebElementini test asamasinda
+    }
+}

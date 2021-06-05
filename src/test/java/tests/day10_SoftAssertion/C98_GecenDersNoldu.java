@@ -1,4 +1,4 @@
-package tests.day10;
+package tests.day10_SoftAssertion;
 
 public class C98_GecenDersNoldu {
     /*

@@ -1,4 +1,4 @@
-package tests.day10;
+package tests.day10_SoftAssertion;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

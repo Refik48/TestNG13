@@ -1,4 +1,4 @@
-package tests.day10;
+package tests.day10_SoftAssertion;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
