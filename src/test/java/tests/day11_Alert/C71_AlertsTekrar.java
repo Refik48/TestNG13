@@ -9,10 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.concurrent.TimeUnit;
 
-public class C01_Alerts {
+public class C71_AlertsTekrar {
 
     WebDriver driver;
     @BeforeClass
@@ -28,49 +29,56 @@ public class C01_Alerts {
         //driver.close();
     }
     @Test
-    public void acceptAlert(){
+    public void acceptAlert() {
         /*
         ● Bir metod olusturun: acceptAlert
             ○ 1. butona tıklayın, uyarıdaki OK butonuna tıklayın ve result mesajının
             “You successfully clicked an alert” oldugunu test edin.
          */
-        driver.findElement(By.xpath("//button[@onclick='jsAlert()']")).click();
+        WebElement jsAlertButton = driver.findElement(By.xpath("//button[@onclick='jsAlert()']"));
+        jsAlertButton.click();
         driver.switchTo().alert().accept();
-        WebElement sonucYazisiWebElementi = driver.findElement(By.cssSelector("#result"));
-        String expectedResultYazisi = "You successfully clicked an alert";
-        String actualResultYazisi = sonucYazisiWebElementi.getText();
-        Assert.assertEquals(actualResultYazisi,expectedResultYazisi);
-        Assert.assertTrue(actualResultYazisi.equals(expectedResultYazisi));
+
+        String actualResultsYazisi = driver.findElement(By.xpath("//p[@id='result']")).getText();
+        String expectedResultsYazisi = "You successfully clicked an alert";
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(actualResultsYazisi.contains(expectedResultsYazisi));
+        softAssert.assertAll();
     }
     @Test
-    public void dismissAlert(){
+    public void dismissAlert() {
         /*
         ● Bir metod olusturun: dismissAlert
             ○ 2. butona tıklayın, uyarıdaki Cancel butonuna tıklayın ve result mesajının
             “successfully” icermedigini test edin.
          */
-        driver.findElement(By.xpath("//button[text()='Click for JS Confirm']")).click();
+        WebElement jsConfrimButton = driver.findElement(By.xpath("//button[@onclick='jsConfirm()']"));
+        jsConfrimButton.click();
+
         driver.switchTo().alert().dismiss();
-        WebElement sonucYazisiWebElementi=driver.findElement(By.cssSelector("#result"));
-        String unExpectedYazi="successfully";
-        String actualResultYazisi=sonucYazisiWebElementi.getText();
-        Assert.assertFalse(actualResultYazisi.contains(unExpectedYazi));
+        String actualResultsYazi = driver.findElement(By.xpath("//p[@id='result']")).getText();
+        String exceptedResultsYazi = "successfully";
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertFalse(actualResultsYazi.contains(exceptedResultsYazi));
+        softAssert.assertAll();
+
     }
     @Test
-    public void sendKeysAlert() throws InterruptedException {
+    public void sendKeysAlert() {
         /*
         ● Bir metod olusturun: sendKeysAlert
             ○ 3. butona tıklayın, uyarıdaki metin kutusuna isminizi yazin,
             OK butonuna tıklayın ve result mesajında isminizin görüntülendiğini doğrulayın.
          */
-        driver.findElement(By.xpath("//button[text()='Click for JS Prompt']")).click();
-        Thread.sleep(1000);
-        String isim ="Kazim Nihat";
-        driver.switchTo().alert().sendKeys(isim);
-        Thread.sleep(3000);
+        WebElement jsPromptButton = driver.findElement(By.xpath("//button[@onclick='jsPrompt()']"));
+        jsPromptButton.click();
+        driver.switchTo().alert().sendKeys("Kazim Nihat");
         driver.switchTo().alert().accept();
-        WebElement sonucYazisiWebElementi = driver.findElement(By.cssSelector("#result"));
-        String actualResultYazisi = sonucYazisiWebElementi.getText();
-        Assert.assertTrue(actualResultYazisi.contains(isim));
+
+        String actualResultsYazi = driver.findElement(By.xpath("//p[@id='result']")).getText();
+        String expectedResultsYazi = "Kazim Nihat";
+        Assert.assertTrue(actualResultsYazi.contains(expectedResultsYazi));
+
     }
 }

@@ -43,7 +43,7 @@ public class C03_iframeTest02 {
         WebElement videoPlayButton = driver.findElement
                 (By.xpath("//button[@class='ytp-large-play-button ytp-button']"));
         videoPlayButton.click();
-        
+
         // iframe'den cikis yaptik
         driver.switchTo().defaultContent();
     }
