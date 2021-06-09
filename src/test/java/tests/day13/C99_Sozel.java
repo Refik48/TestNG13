@@ -28,5 +28,12 @@ public class C99_Sozel {
         4) moveToElement() : Fare isaretcisini ogenin ortasina kaydirir.
         5) contextClick() : Fare uzerinde sag click yapar.
 
+        Klavye aksiyonlari ile klavyedeki tuslari control edebiliriz.
+        Bunun icin 3 tane aksiyon kullaniriz.
+
+        1) sendKeys (): Öğeye bir dizi anahtar gönderir
+        2) keyDown (): Klavyede tusa basma islemi gerceklestirir
+        3) keyUp (): Klavyede tusu serbest birakma islemi gerceklestirir
+
      */
 }
