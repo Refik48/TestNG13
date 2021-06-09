@@ -1,4 +1,4 @@
-package tests.day13;
+package tests.day13_Actions;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;

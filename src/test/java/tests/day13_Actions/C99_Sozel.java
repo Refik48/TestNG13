@@ -1,4 +1,4 @@
-package tests.day13;
+package tests.day13_Actions;
 
 public class C99_Sozel {
     /*
