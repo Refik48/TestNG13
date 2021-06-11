@@ -1,4 +1,4 @@
-package tests.day14;
+package tests.day14_UploadDownload;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;

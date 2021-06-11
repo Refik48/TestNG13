@@ -1,4 +1,4 @@
-package tests.day14;
+package tests.day14_UploadDownload;
 
 import org.junit.Assert;
 import org.testng.annotations.Test;

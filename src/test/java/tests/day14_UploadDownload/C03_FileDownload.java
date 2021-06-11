@@ -1,4 +1,4 @@
-package tests.day14;
+package tests.day14_UploadDownload;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import utilities.TestBaseClass;
 
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class C03_FileDownload extends TestBaseClass {
